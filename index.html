@@ -25,148 +25,75 @@
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --ground:#191021;
-    --paper:#241730;
-    --ink:#F1E8D7;
-    --muted:#A695AE;
-    --violet:#C6A4F7;
-    --violet-soft:#9C74E2;
-    --line:rgba(241,232,215,.18);
-    --line-strong:rgba(241,232,215,.34);
+    --ground:#191021; --paper:#241730; --ink:#F1E8D7; --muted:#A695AE;
+    --violet:#C6A4F7; --violet-soft:#9C74E2;
+    --line:rgba(241,232,215,.18); --line-strong:rgba(241,232,215,.34);
     --shade:rgba(241,232,215,.05);
   }
 }
 :root[data-theme="dark"]{
-  --ground:#191021;
-  --paper:#241730;
-  --ink:#F1E8D7;
-  --muted:#A695AE;
-  --violet:#C6A4F7;
-  --violet-soft:#9C74E2;
-  --line:rgba(241,232,215,.18);
-  --line-strong:rgba(241,232,215,.34);
+  --ground:#191021; --paper:#241730; --ink:#F1E8D7; --muted:#A695AE;
+  --violet:#C6A4F7; --violet-soft:#9C74E2;
+  --line:rgba(241,232,215,.18); --line-strong:rgba(241,232,215,.34);
   --shade:rgba(241,232,215,.05);
 }
 *{box-sizing:border-box}
 body{
-  margin:0;
-  background:var(--ground);
-  color:var(--ink);
-  font-family:var(--body);
-  font-size:17px;
-  line-height:1.55;
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:var(--body); font-size:17px; line-height:1.55;
   -webkit-font-smoothing:antialiased;
 }
 .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
 a{color:inherit}
 
-/* ---------- masthead ---------- */
 .masthead{padding:46px 0 0}
 .mast-row{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px 32px}
-.wordmark{
-  font-family:var(--display);
-  font-weight:500;
-  font-size:clamp(30px,4.6vw,44px);
-  letter-spacing:.005em;
-  line-height:1;
-  margin:0;
-  text-decoration:none;
-}
+.wordmark{font-family:var(--display);font-weight:500;font-size:clamp(30px,4.6vw,44px);letter-spacing:.005em;line-height:1;margin:0;text-decoration:none}
 .wordmark .dot{color:var(--violet)}
-.strap{
-  font-family:var(--mono);
-  font-size:11.5px;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color:var(--muted);
-  margin:10px 0 0;
-}
+.strap{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:10px 0 0}
 nav{display:flex;gap:26px;padding-bottom:4px}
 .navlink{
-  font-family:var(--mono);
-  font-size:12.5px;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  text-decoration:none;
-  color:var(--muted);
-  padding-bottom:6px;
-  border-bottom:2px solid transparent;
-  transition:color .18s ease,border-color .18s ease;
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;
+  text-decoration:none;color:var(--muted);padding-bottom:6px;
+  border-bottom:2px solid transparent;transition:color .18s ease,border-color .18s ease;
 }
 .navlink:hover{color:var(--ink)}
 .navlink[aria-current="page"]{color:var(--violet);border-bottom-color:var(--violet)}
 .rule{height:1px;background:var(--line-strong);margin:22px 0 0}
 
-/* ---------- page intro ---------- */
-.intro{padding:54px 0 38px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:14px 56px;align-items:end}
-.eyebrow{
-  font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--violet);margin:0 0 14px
-}
-h1{
-  font-family:var(--display);font-weight:400;font-style:italic;
-  font-size:clamp(38px,6.4vw,64px);line-height:1.02;margin:0;text-wrap:balance;
-}
+.intro{padding:54px 0 40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:14px 56px;align-items:end}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--violet);margin:0 0 14px}
+h1{font-family:var(--display);font-weight:400;font-style:italic;font-size:clamp(38px,6.4vw,64px);line-height:1.02;margin:0;text-wrap:balance}
 .lead{margin:0;max-width:52ch;color:var(--muted);font-size:16.5px}
 .lead em{font-style:italic;color:var(--ink)}
 
-.note{
-  font-family:var(--mono);font-size:11.5px;color:var(--muted);
-  border:1px solid var(--line);border-left:2px solid var(--violet-soft);
-  padding:9px 14px;margin:0 0 34px;line-height:1.5;background:var(--shade);
+/* Album index: each card is one album, cropped to nothing—natural shape kept */
+.albums{columns:2;column-gap:30px}
+.albums.single{columns:1;max-width:560px}
+.album{break-inside:avoid;margin:0 0 34px;display:block;text-decoration:none}
+.album .frame{
+  position:relative;overflow:hidden;background:var(--paper);
+  border:1px solid var(--line);margin:0 0 12px;
 }
-
-/* ---------- dinners: month groups + masonry ---------- */
-.month{margin:0 0 54px}
-.month-head{display:flex;align-items:baseline;gap:16px;margin:0 0 22px}
-.month-head h2{
-  font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18em;
-  text-transform:uppercase;margin:0;color:var(--ink);white-space:nowrap
-}
-.month-head .count{font-family:var(--mono);font-size:11.5px;color:var(--muted);white-space:nowrap}
-.month-head .lead-line{flex:1;height:1px;background:var(--line)}
-.masonry{columns:3;column-gap:22px}
-.masonry .tile{break-inside:avoid;margin:0 0 22px}
-
-/* ---------- design grid ---------- */
-.projects{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:40px 26px;margin:0}
-
-/* ---------- tiles ---------- */
-figure.tile{margin:0;display:flex;flex-direction:column;gap:11px}
-.frame{
-  position:relative;aspect-ratio:var(--ar,4/5);overflow:hidden;background:var(--paper);
-  border:1px dashed var(--line-strong);
-}
-.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.2,.7,.3,1)}
-.frame.loaded{border:1px solid var(--line);aspect-ratio:auto}
-.frame.loaded img{position:static;height:auto}
-.frame .slot{
-  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-  font-family:var(--mono);font-size:11px;color:var(--muted);text-align:center;padding:16px;
-  word-break:break-all;line-height:1.6;
-}
-.frame.loaded .slot{display:none}
-a.tile-link{text-decoration:none;display:block}
-a.tile-link:hover .frame img{transform:scale(1.035)}
-.cap-title{font-family:var(--display);font-size:19px;font-weight:500;line-height:1.25;margin:0}
-.cap-meta{
+.album img{display:block;width:100%;height:auto;transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+.album:hover img{transform:scale(1.035)}
+.album .title{font-family:var(--display);font-size:23px;font-weight:500;line-height:1.2;margin:0 0 6px;transition:color .18s ease}
+.album:hover .title{color:var(--violet)}
+.album .meta{
   font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--muted);
-  display:flex;align-items:baseline;gap:10px;margin:0
+  display:flex;align-items:baseline;gap:10px;margin:0;
 }
-.cap-meta .dots{flex:1;border-bottom:1px dotted var(--line-strong);transform:translateY(-3px)}
-.cap-meta .kind{color:var(--violet);text-transform:uppercase;letter-spacing:.12em;white-space:nowrap}
-.cap-note{margin:0;font-size:14.5px;color:var(--muted);font-style:italic}
+.album .meta .dots{flex:1;border-bottom:1px dotted var(--line-strong);transform:translateY(-3px)}
+.album .meta .count{color:var(--violet);white-space:nowrap}
 
-/* ---------- footer ---------- */
-footer{margin:76px 0 0;border-top:1px solid var(--line-strong);padding:26px 0 60px}
-.foot-row{display:flex;flex-wrap:wrap;gap:14px 32px;justify-content:space-between;
-  font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--muted)}
+footer{margin:60px 0 0;border-top:1px solid var(--line-strong);padding:26px 0 60px}
+.foot-row{display:flex;flex-wrap:wrap;gap:14px 32px;justify-content:space-between;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--muted)}
 .foot-row a{color:var(--violet);text-decoration:none;border-bottom:1px solid transparent}
 .foot-row a:hover{border-bottom-color:var(--violet)}
 
 :focus-visible{outline:2px solid var(--violet);outline-offset:3px}
-@media (max-width:860px){ .masonry{columns:2} .intro{grid-template-columns:1fr;gap:22px;padding:40px 0 30px} }
-@media (max-width:560px){ .masonry{columns:1} .wrap{padding:0 20px} nav{gap:18px} }
+@media (max-width:860px){ .intro{grid-template-columns:1fr;gap:22px;padding:40px 0 32px} }
+@media (max-width:620px){ .albums{columns:1} .wrap{padding:0 20px} nav{gap:18px} }
 @media (prefers-reduced-motion:reduce){ *{transition:none!important} }
 </style>
 </head>
@@ -190,179 +117,75 @@ footer{margin:76px 0 0;border-top:1px solid var(--line-strong);padding:26px 0 60
     <section id="page-dinners">
       <div class="intro">
         <div>
-          <p class="eyebrow">Cooked at home</p>
+          <p class="eyebrow">Cooked and eaten</p>
           <h1>Dinners</h1>
         </div>
-        <p class="lead">A running record of what came out of the kitchen — photographed before it got cold, <em>never</em> styled. Newest first.</p>
+        <p class="lead">Each dinner has a theme, a menu and an album. Pick one to see <em>the whole night</em>.</p>
       </div>
-      <p class="note" id="note-dinners" hidden></p>
-      <div id="grid-dinners"></div>
+      <div class="albums">
+        <a class="album" href="https://photos.danielpokras.com/album/silk-road-dinner">
+          <div class="frame"><img src="images/covers/silk-road.jpg" width="1066" height="1600" alt="Silk Road Dinner"></div>
+          <p class="title">Silk Road Dinner</p>
+          <p class="meta"><span>March 2026</span><span class="dots"></span><span class="count">11 photos</span></p>
+        </a>
+        <a class="album" href="https://photos.danielpokras.com/album/earth-beneath-us-dinner">
+          <div class="frame"><img src="images/covers/earth-beneath-us.jpg" width="1600" height="1066" alt="Earth Beneath Us Dinner"></div>
+          <p class="title">Earth Beneath Us Dinner</p>
+          <p class="meta"><span>September 2025</span><span class="dots"></span><span class="count">10 photos</span></p>
+        </a>
+        <a class="album" href="https://photos.danielpokras.com/album/colors-dinner">
+          <div class="frame"><img src="images/covers/colors.jpg" width="1066" height="1600" alt="Colors Dinner"></div>
+          <p class="title">Colors Dinner</p>
+          <p class="meta"><span>March 2025</span><span class="dots"></span><span class="count">11 photos</span></p>
+        </a>
+        <a class="album" href="https://photos.danielpokras.com/album/korean-buddhist-food-dinner">
+          <div class="frame"><img src="images/covers/korean-buddhist.jpg" width="1600" height="1066" alt="Korean Buddhist Food Dinner"></div>
+          <p class="title">Korean Buddhist Food Dinner</p>
+          <p class="meta"><span>March 2024</span><span class="dots"></span><span class="count">3 photos</span></p>
+        </a>
+      </div>
     </section>
 
     <section id="page-design" hidden>
       <div class="intro">
         <div>
-          <p class="eyebrow">Selected work</p>
+          <p class="eyebrow">Made by hand</p>
           <h1>Design</h1>
         </div>
-        <p class="lead">Identity, typography and interface work — client projects alongside things made for their own sake.</p>
+        <p class="lead">Objects built rather than drawn. <em>More to come.</em></p>
       </div>
-      <p class="note" id="note-design" hidden></p>
-      <div class="projects" id="grid-design"></div>
+      <div class="albums single">
+        <a class="album" href="https://photos.danielpokras.com/album/bonsai-lamp">
+          <div class="frame"><img src="images/covers/bonsai-lamp.jpg" width="1600" height="1066" alt="Bonsai Lamp"></div>
+          <p class="title">Bonsai Lamp</p>
+          <p class="meta"><span>June 2026</span><span class="dots"></span><span class="count">10 photos</span></p>
+        </a>
+      </div>
     </section>
   </main>
 
   <footer>
     <div class="foot-row">
-      <span>Daniel Pokras — London</span>
+      <span>Daniel Pokras</span>
       <span><a href="mailto:hello@danielpokras.com">hello@danielpokras.com</a></span>
-      <span><a href="https://photos.danielpokras.com">photos.danielpokras.com</a></span>
+      <span><a href="https://photos.danielpokras.com">All photos →</a></span>
     </div>
   </footer>
 </div>
 
 <script>
-/* ----------------------------------------------------------------
-   Content comes from photos.json when it exists (generated on push
-   by .github/workflows/manifest.yml). Until then these samples show
-   the layout — replace or just drop real photos into images/.
------------------------------------------------------------------*/
-const SAMPLE = {
-  dinners: [
-    {src:"images/dinners/2026-09-06-cacio-e-pepe.jpg",       title:"Cacio e pepe",            date:"2026-09-06", note:"Too much pepper, on purpose.", ar:"4/5"},
-    {src:"images/dinners/2026-09-01-miso-aubergine.jpg",     title:"Miso aubergine, sesame",  date:"2026-09-01", note:"", ar:"1/1"},
-    {src:"images/dinners/2026-08-23-forty-clove-chicken.jpg",title:"Chicken, forty cloves",   date:"2026-08-23", note:"Garlic count approximate.", ar:"3/4"},
-    {src:"images/dinners/2026-08-15-orecchiette.jpg",        title:"Orecchiette, by hand",    date:"2026-08-15", note:"", ar:"5/4"},
-    {src:"images/dinners/2026-08-02-tarte-tatin.jpg",        title:"Tarte tatin, take two",   date:"2026-08-02", note:"The first one is not photographed.", ar:"4/5"},
-    {src:"images/dinners/2026-07-19-short-rib.jpg",          title:"Short rib, polenta",      date:"2026-07-19", note:"", ar:"1/1"}
-  ],
-  design: [
-    {src:"images/design/ferment-identity.jpg",   title:"Ferment",              year:"2026", kind:"Identity", note:"Brand and packaging for a fermentation supply shop."},
-    {src:"images/design/pokras-grotesk.jpg",     title:"Pokras Grotesk",       year:"2026", kind:"Type",     note:"A working typeface, three weights in progress."},
-    {src:"images/design/removal-explorer.jpg",   title:"Carbon removal explorer", year:"2025", kind:"Interface", note:"Data tool for comparing durable removal projects."},
-    {src:"images/design/riso-menus.jpg",         title:"Riso menu series",     year:"2025", kind:"Print",    note:"Two-colour menus for a supper club, printed in-house."},
-    {src:"images/design/garden-wayfinding.jpg",  title:"Garden wayfinding",    year:"2025", kind:"Signage",  note:"Signs and plant labels for a community garden."},
-    {src:"images/design/field-notes-two.jpg",    title:"Field Notes, issue two", year:"2024", kind:"Editorial", note:"48-page annual, commissioned photography."}
-  ]
-};
-
-const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-const el = (t, cls) => { const n = document.createElement(t); if (cls) n.className = cls; return n; };
-
-function frame(src, alt, ar){
-  const f = el("div","frame");
-  if (ar) f.style.setProperty("--ar", ar);
-  f.dataset.slot = src;
-  const img = el("img");
-  img.src = src; img.alt = alt; img.loading = "lazy"; img.decoding = "async";
-  img.addEventListener("load", () => f.classList.add("loaded"));
-  img.addEventListener("error", () => { img.remove(); });
-  const slot = el("span","slot");
-  slot.textContent = src;
-  f.append(img, slot);
-  return f;
-}
-
-function dinnerTile(item){
-  const fig = el("figure","tile");
-  const d = item.date ? new Date(item.date + "T12:00:00") : null;
-  const when = d && !isNaN(d) ? d.getDate() + " " + MONTHS[d.getMonth()].slice(0,3) : "";
-  fig.append(frame(item.src, item.title || "Dinner", item.ar));
-  const title = el("p","cap-title"); title.textContent = item.title || "";
-  const meta = el("p","cap-meta");
-  const left = el("span"); left.textContent = when;
-  const dots = el("span","dots");
-  meta.append(left, dots);
-  fig.append(title, meta);
-  if (item.note){ const n = el("p","cap-note"); n.textContent = item.note; fig.append(n); }
-  return fig;
-}
-
-function designTile(item){
-  const fig = el("figure","tile");
-  fig.append(frame(item.src, item.title || "Project", item.ar || "4/3"));
-  const title = el("p","cap-title"); title.textContent = item.title || "";
-  const meta = el("p","cap-meta");
-  const y = el("span"); y.textContent = item.year || "";
-  const dots = el("span","dots");
-  const kind = el("span","kind"); kind.textContent = item.kind || "";
-  meta.append(y, dots, kind);
-  fig.append(title, meta);
-  if (item.note){ const n = el("p","cap-note"); n.textContent = item.note; fig.append(n); }
-  return fig;
-}
-
-function renderDinners(items){
-  const host = document.getElementById("grid-dinners");
-  host.textContent = "";
-  const sorted = [...items].sort((a,b) => (b.date || "").localeCompare(a.date || ""));
-  const groups = new Map();
-  for (const it of sorted){
-    const d = it.date ? new Date(it.date + "T12:00:00") : null;
-    const key = d && !isNaN(d) ? MONTHS[d.getMonth()] + " " + d.getFullYear() : "Undated";
-    if (!groups.has(key)) groups.set(key, []);
-    groups.get(key).push(it);
-  }
-  for (const [label, list] of groups){
-    const sec = el("section","month");
-    const head = el("div","month-head");
-    const h = el("h2"); h.textContent = label;
-    const line = el("span","lead-line");
-    const c = el("span","count"); c.textContent = list.length + (list.length === 1 ? " dish" : " dishes");
-    head.append(h, line, c);
-    const grid = el("div","masonry");
-    list.forEach(it => grid.append(dinnerTile(it)));
-    sec.append(head, grid);
-    host.append(sec);
-  }
-}
-
-function renderDesign(items){
-  const host = document.getElementById("grid-design");
-  host.textContent = "";
-  items.forEach(it => host.append(designTile(it)));
-}
-
 function route(){
-  const name = (location.hash.replace(/^#\/?/, "") || "dinners").toLowerCase();
-  const page = name === "design" ? "design" : "dinners";
-  document.getElementById("page-dinners").hidden = page !== "dinners";
-  document.getElementById("page-design").hidden = page !== "design";
-  document.querySelectorAll(".navlink").forEach(a => {
-    if (a.dataset.route === page) a.setAttribute("aria-current","page");
-    else a.removeAttribute("aria-current");
+  const name = (location.hash.replace(/^#\/?/, '') || 'dinners').toLowerCase();
+  const page = name === 'design' ? 'design' : 'dinners';
+  document.getElementById('page-dinners').hidden = page !== 'dinners';
+  document.getElementById('page-design').hidden = page !== 'design';
+  document.querySelectorAll('.navlink').forEach(a => {
+    if (a.dataset.route === page) { a.setAttribute('aria-current', 'page'); }
+    else { a.removeAttribute('aria-current'); }
   });
-  window.scrollTo({top:0, behavior:"instant"});
 }
-
-async function load(){
-  let data = null;
-  try {
-    const res = await fetch("photos.json", {cache:"no-cache"});
-    if (res.ok) data = await res.json();
-  } catch (_) { /* no manifest yet — samples below */ }
-
-  const dinners = data && data.dinners && data.dinners.length ? data.dinners : SAMPLE.dinners;
-  const design  = data && data.design  && data.design.length  ? data.design  : SAMPLE.design;
-
-  if (!(data && data.dinners && data.dinners.length)){
-    const n = document.getElementById("note-dinners");
-    n.textContent = "Sample entries. Drop photos into images/dinners/ named like 2026-09-06-cacio-e-pepe.jpg and they replace these automatically.";
-    n.hidden = false;
-  }
-  if (!(data && data.design && data.design.length)){
-    const n = document.getElementById("note-design");
-    n.textContent = "Sample entries. Drop images into images/design/ named like 2026-ferment-identity.jpg and they replace these automatically.";
-    n.hidden = false;
-  }
-
-  renderDinners(dinners);
-  renderDesign(design);
-}
-
-window.addEventListener("hashchange", route);
+window.addEventListener('hashchange', route);
 route();
-load();
 </script>
 </body>
 </html>

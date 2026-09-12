@@ -1,56 +1,43 @@
 # projects.danielpokras.com
 
-Two-page portfolio: **Dinners** (food photography) and **Design** (selected work).
-One static `index.html` — no build step, no framework, no database.
+A cream-and-purple front page for the photo albums. One card per album — cover
+image, name, date, photo count — linking through to the full album on
+`photos.danielpokras.com`, which runs the photo blog app.
 
-## Adding photos in bulk
+Two pages, hash-routed: **Dinners** (`#/dinners`) and **Design** (`#/design`).
+One static `index.html`. No build step, no framework, no database.
 
-Filenames become the captions, so dropping a batch of files in is the whole job.
+## Adding or changing an album card
 
-**Dinners** — `images/dinners/YYYY-MM-DD-title.jpg`
-`2026-09-06-cacio-e-pepe.jpg` → *Cacio e pepe*, 6 Sep, grouped under September 2026.
+Cards are plain HTML in `index.html` — copy an existing `<a class="album">`
+block and edit four things: the `href` (the album URL), the cover image, the
+title, and the meta line (date and photo count).
 
-**Design** — `images/design/YYYY-title--Kind.jpg`
-`2026-ferment--Identity.jpg` → *Ferment*, 2026, Identity. The `--Kind` part is optional.
+To grab a cover image from the photo blog:
 
-Three ways to upload:
+1. Open the photo on `photos.danielpokras.com`, copy its image URL
+   (a `blob.vercel-storage.com` address)
+2. `curl -o images/covers/<name>.jpg "<that url>"`
+3. `tools/resize.sh images/covers/<name>.jpg images/covers` — caps the long
+   edge at 1600px and re-encodes, keeping the repo small. Uses `sips`, built
+   into macOS.
+4. Set the `width` and `height` attributes on the `<img>` to the resized
+   dimensions, so the page doesn't jump while images load
 
-1. **GitHub web** — open `images/dinners`, *Add file → Upload files*, drag in up to 100 at once, commit.
-2. **Finder + git** — drop files into the folder, then `git add images && git commit -m "New dinners" && git push`.
-3. **Resize first** (recommended, keeps the repo small):
-   `tools/resize.sh ~/Pictures/dinners/*.jpg images/dinners`
-   Caps the long edge at 2000px and re-encodes as JPEG. Uses `sips`, built into macOS.
-
-On every push, the GitHub Action in `.github/workflows/manifest.yml` regenerates `photos.json`
-and the site picks up the new photos. Until any real photos exist, the page shows sample
-entries so the layout is visible.
-
-### Nicer captions without renaming files
-
-Add entries to `captions.json`, keyed by path. They override anything derived from the filename:
-
-```json
-{
-  "images/dinners/2026-09-06-cacio-e-pepe.jpg": {
-    "title": "Cacio e pepe",
-    "note": "Too much pepper, on purpose."
-  }
-}
-```
+Covers are copies, not live links — replacing a photo in the admin does not
+update the card here.
 
 ## Deploying
 
-Static hosting, free tier is plenty:
+Static hosting, free tier is plenty. On Vercel: New Project → import this repo
+→ Framework preset *Other*, no build command, output directory `.` → Deploy,
+then Settings → Domains → `projects.danielpokras.com`.
 
-- **Vercel** (already hosts `photos.danielpokras.com`) — New Project → import this repo →
-  Framework preset *Other*, no build command, output directory `.` → Deploy.
-  Then Project → Settings → Domains → add `projects.danielpokras.com`. DNS is already
-  on Vercel nameservers, so the record is created for you.
-- **Cloudflare Pages** works identically if you'd rather keep it off Vercel.
-
-Both are $0 at this size. The only cost is the domain you already own.
+This is a separate Vercel project from the photo blob. The two sites share
+nothing but links.
 
 ## Editing the design
 
-Everything lives in `index.html`: palette tokens at the top of the `<style>` block
-(`--ground`, `--paper`, `--ink`, `--violet`), then layout, then the render script.
+Everything is in `index.html`: palette tokens at the top of the `<style>`
+block (`--ground`, `--paper`, `--ink`, `--violet`), then layout, then a few
+lines of routing script. Light and dark are both defined.
