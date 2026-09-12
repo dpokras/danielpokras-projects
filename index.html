@@ -75,6 +75,8 @@ h1{font-family:var(--display);font-weight:400;font-style:italic;font-size:clamp(
 .album-head .meta{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--muted);white-space:nowrap}
 .album-head .meta .count{color:var(--violet)}
 .album-blurb{margin:-6px 0 22px;max-width:64ch;color:var(--muted);font-size:16px}
+.album-blurb a{color:var(--violet);text-decoration:none;border-bottom:1px solid var(--line-strong)}
+.album-blurb a:hover{border-bottom-color:var(--violet)}
 .shots{columns:3;column-gap:18px}
 .shot{break-inside:avoid;margin:0 0 18px;display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;line-height:0}
 .shot img{display:block;width:100%;height:auto;background:var(--paper);border:1px solid var(--line);transition:opacity .25s ease}
@@ -170,6 +172,26 @@ const el = (tag, className) => {
   return node;
 };
 
+const LINK_PATTERN = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;
+
+// Blurbs may carry [label](url) links. Built as text and anchor nodes so
+// nothing in the manifest is ever treated as markup.
+function withLinks(text) {
+  const fragment = document.createDocumentFragment();
+  let index = 0;
+  for (const match of text.matchAll(LINK_PATTERN)) {
+    if (match.index > index) { fragment.append(text.slice(index, match.index)); }
+    const link = el('a');
+    link.href = match[2];
+    link.textContent = match[1];
+    link.rel = 'noopener';
+    fragment.append(link);
+    index = match.index + match[0].length;
+  }
+  fragment.append(text.slice(index));
+  return fragment;
+}
+
 function renderAlbum(site, album) {
   const section = el('section', 'album');
 
@@ -204,7 +226,7 @@ function renderAlbum(site, album) {
   section.append(head);
   if (album.blurb) {
     const blurb = el('p', 'album-blurb');
-    blurb.textContent = album.blurb;
+    blurb.append(withLinks(album.blurb));
     section.append(blurb);
   }
   section.append(shots);
