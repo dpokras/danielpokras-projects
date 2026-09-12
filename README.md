@@ -1,43 +1,43 @@
 # projects.danielpokras.com
 
-A cream-and-purple front page for the photo albums. One card per album — cover
-image, name, date, photo count — linking through to the full album on
-`photos.danielpokras.com`, which runs the photo blog app.
+A cream-and-purple gallery for the photo albums. Every photo from every album,
+grouped by album, with a lightbox — served from one static `index.html`. No
+build step, no framework, no database.
 
 Two pages, hash-routed: **Dinners** (`#/dinners`) and **Design** (`#/design`).
-One static `index.html`. No build step, no framework, no database.
 
-## Adding or changing an album card
+## How photos get here
 
-Cards are plain HTML in `index.html` — copy an existing `<a class="album">`
-block and edit four things: the `href` (the album URL), the cover image, the
-title, and the meta line (date and photo count).
+They don't. Photos live on `photos.danielpokras.com` (the photo blog app) and
+that stays the only place you upload. This site holds no image files at all:
 
-To grab a cover image from the photo blog:
+- `photos.json` records which photos exist in which album
+- the page points at the blog's image optimizer, which resizes and caches them
+  (`/_next/image?url=...&w=1080`), so a 3MB original arrives as ~125KB
 
-1. Open the photo on `photos.danielpokras.com`, copy its image URL
-   (a `blob.vercel-storage.com` address)
-2. `curl -o images/covers/<name>.jpg "<that url>"`
-3. `tools/resize.sh images/covers/<name>.jpg images/covers` — caps the long
-   edge at 1600px and re-encodes, keeping the repo small. Uses `sips`, built
-   into macOS.
-4. Set the `width` and `height` attributes on the `<img>` to the resized
-   dimensions, so the page doesn't jump while images load
+`photos.json` is rebuilt by `.github/workflows/manifest.yml` every day and on
+demand (Actions tab → Rebuild photo manifest → Run workflow). Upload through
+the admin as usual and the new photos appear here within a day, or immediately
+if you run the workflow.
 
-Covers are copies, not live links — replacing a photo in the admin does not
-update the card here.
+To rebuild by hand: `python3 tools/build-manifest.py`
+
+## Adding an album
+
+Add it to `tools/albums.json` with its slug, a `section` (`dinners` or
+`design`) and the date to display, then rebuild. The album title and its
+photos are read from the site — only the slug, section and date are set here,
+because a dinner is remembered by the night it happened, not by when its
+photos were uploaded.
 
 ## Deploying
 
-Static hosting, free tier is plenty. On Vercel: New Project → import this repo
-→ Framework preset *Other*, no build command, output directory `.` → Deploy,
-then Settings → Domains → `projects.danielpokras.com`.
-
-This is a separate Vercel project from the photo blob. The two sites share
-nothing but links.
+Static hosting. On Vercel: import this repo, framework preset *Other*, no
+build command, output directory `.`. This is a separate project from the
+photo blog; the two share nothing but links.
 
 ## Editing the design
 
 Everything is in `index.html`: palette tokens at the top of the `<style>`
-block (`--ground`, `--paper`, `--ink`, `--violet`), then layout, then a few
-lines of routing script. Light and dark are both defined.
+block (`--ground`, `--paper`, `--ink`, `--violet`), then layout, then the
+render script and lightbox. Light and dark are both defined.

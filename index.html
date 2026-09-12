@@ -67,24 +67,28 @@ h1{font-family:var(--display);font-weight:400;font-style:italic;font-size:clamp(
 .lead{margin:0;max-width:52ch;color:var(--muted);font-size:16.5px}
 .lead em{font-style:italic;color:var(--ink)}
 
-/* Album index: each card is one album, cropped to nothing—natural shape kept */
-.albums{columns:2;column-gap:30px}
-.albums.single{columns:1;max-width:560px}
-.album{break-inside:avoid;margin:0 0 34px;display:block;text-decoration:none}
-.album .frame{
-  position:relative;overflow:hidden;background:var(--paper);
-  border:1px solid var(--line);margin:0 0 12px;
-}
-.album img{display:block;width:100%;height:auto;transition:transform .5s cubic-bezier(.2,.7,.3,1)}
-.album:hover img{transform:scale(1.035)}
-.album .title{font-family:var(--display);font-size:23px;font-weight:500;line-height:1.2;margin:0 0 6px;transition:color .18s ease}
-.album:hover .title{color:var(--violet)}
-.album .meta{
-  font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--muted);
-  display:flex;align-items:baseline;gap:10px;margin:0;
-}
-.album .meta .dots{flex:1;border-bottom:1px dotted var(--line-strong);transform:translateY(-3px)}
-.album .meta .count{color:var(--violet);white-space:nowrap}
+/* Album galleries: every photo, natural shape, grouped by night */
+.album-list{display:flex;flex-direction:column;gap:56px}
+.album-head{display:flex;align-items:baseline;gap:16px;margin:0 0 20px}
+.album-head h2{font-family:var(--display);font-size:27px;font-weight:500;margin:0;line-height:1.1;white-space:nowrap}
+.album-head .dots{flex:1;border-bottom:1px dotted var(--line-strong);transform:translateY(-5px)}
+.album-head .meta{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--muted);white-space:nowrap}
+.album-head .meta .count{color:var(--violet)}
+.shots{columns:3;column-gap:18px}
+.shot{break-inside:avoid;margin:0 0 18px;display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;line-height:0}
+.shot img{display:block;width:100%;height:auto;background:var(--paper);border:1px solid var(--line);transition:opacity .25s ease}
+.shot:hover img{opacity:.85}
+.loading{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+
+/* Lightbox */
+.lightbox{position:fixed;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;padding:28px;background:color-mix(in srgb,var(--ground) 94%,#000);border:0}
+.lightbox img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;box-shadow:0 18px 60px rgba(0,0,0,.28)}
+.lightbox button{position:absolute;background:none;border:0;color:var(--ink);font-family:var(--mono);font-size:13px;cursor:pointer;padding:12px 16px;letter-spacing:.1em}
+.lightbox button:hover{color:var(--violet)}
+.lb-close{top:10px;right:14px}
+.lb-prev{left:6px;top:50%;transform:translateY(-50%);font-size:22px}
+.lb-next{right:6px;top:50%;transform:translateY(-50%);font-size:22px}
+.lb-count{bottom:10px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:11.5px;color:var(--muted);letter-spacing:.1em}
 
 footer{margin:60px 0 0;border-top:1px solid var(--line-strong);padding:26px 0 60px}
 .foot-row{display:flex;flex-wrap:wrap;gap:14px 32px;justify-content:space-between;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--muted)}
@@ -93,7 +97,13 @@ footer{margin:60px 0 0;border-top:1px solid var(--line-strong);padding:26px 0 60
 
 :focus-visible{outline:2px solid var(--violet);outline-offset:3px}
 @media (max-width:860px){ .intro{grid-template-columns:1fr;gap:22px;padding:40px 0 32px} }
-@media (max-width:620px){ .albums{columns:1} .wrap{padding:0 20px} nav{gap:18px} }
+@media (max-width:900px){ .shots{columns:2} }
+@media (max-width:700px){
+  .album-head{flex-direction:column;align-items:flex-start;gap:6px}
+  .album-head h2{white-space:normal}
+  .album-head .dots{display:none}
+}
+@media (max-width:620px){ .shots{columns:1} .wrap{padding:0 20px} nav{gap:18px} }
 @media (prefers-reduced-motion:reduce){ *{transition:none!important} }
 </style>
 </head>
@@ -120,30 +130,9 @@ footer{margin:60px 0 0;border-top:1px solid var(--line-strong);padding:26px 0 60
           <p class="eyebrow">Cooked and eaten</p>
           <h1>Dinners</h1>
         </div>
-        <p class="lead">Each dinner has a theme, a menu and an album. Pick one to see <em>the whole night</em>.</p>
+        <p class="lead">Four dinners, each with a theme and a menu. <em>Every photograph</em> from each night.</p>
       </div>
-      <div class="albums">
-        <a class="album" href="https://photos.danielpokras.com/album/silk-road-dinner">
-          <div class="frame"><img src="images/covers/silk-road.jpg" width="1066" height="1600" alt="Silk Road Dinner"></div>
-          <p class="title">Silk Road Dinner</p>
-          <p class="meta"><span>March 2026</span><span class="dots"></span><span class="count">11 photos</span></p>
-        </a>
-        <a class="album" href="https://photos.danielpokras.com/album/earth-beneath-us-dinner">
-          <div class="frame"><img src="images/covers/earth-beneath-us.jpg" width="1600" height="1066" alt="Earth Beneath Us Dinner"></div>
-          <p class="title">Earth Beneath Us Dinner</p>
-          <p class="meta"><span>September 2025</span><span class="dots"></span><span class="count">10 photos</span></p>
-        </a>
-        <a class="album" href="https://photos.danielpokras.com/album/colors-dinner">
-          <div class="frame"><img src="images/covers/colors.jpg" width="1066" height="1600" alt="Colors Dinner"></div>
-          <p class="title">Colors Dinner</p>
-          <p class="meta"><span>March 2025</span><span class="dots"></span><span class="count">11 photos</span></p>
-        </a>
-        <a class="album" href="https://photos.danielpokras.com/album/korean-buddhist-food-dinner">
-          <div class="frame"><img src="images/covers/korean-buddhist.jpg" width="1600" height="1066" alt="Korean Buddhist Food Dinner"></div>
-          <p class="title">Korean Buddhist Food Dinner</p>
-          <p class="meta"><span>March 2024</span><span class="dots"></span><span class="count">3 photos</span></p>
-        </a>
-      </div>
+      <div id="albums-dinners" class="album-list"></div>
     </section>
 
     <section id="page-design" hidden>
@@ -154,13 +143,7 @@ footer{margin:60px 0 0;border-top:1px solid var(--line-strong);padding:26px 0 60
         </div>
         <p class="lead">Objects built rather than drawn. <em>More to come.</em></p>
       </div>
-      <div class="albums single">
-        <a class="album" href="https://photos.danielpokras.com/album/bonsai-lamp">
-          <div class="frame"><img src="images/covers/bonsai-lamp.jpg" width="1600" height="1066" alt="Bonsai Lamp"></div>
-          <p class="title">Bonsai Lamp</p>
-          <p class="meta"><span>June 2026</span><span class="dots"></span><span class="count">10 photos</span></p>
-        </a>
-      </div>
+      <div id="albums-design" class="album-list"></div>
     </section>
   </main>
 
@@ -174,18 +157,165 @@ footer{margin:60px 0 0;border-top:1px solid var(--line-strong);padding:26px 0 60
 </div>
 
 <script>
-function route(){
+// Photos live on the photo blog; photos.json records which ones exist and the
+// blog's image optimizer serves them at the size the layout asks for.
+const GRID_WIDTH = 1080;
+const FULL_WIDTH = 1920;
+
+const sized = (site, src, width) =>
+  `${site}/_next/image?url=${encodeURIComponent(src)}&w=${width}&q=75`;
+
+const el = (tag, className) => {
+  const node = document.createElement(tag);
+  if (className) { node.className = className; }
+  return node;
+};
+
+function renderAlbum(site, album) {
+  const section = el('section', 'album');
+
+  const head = el('div', 'album-head');
+  const heading = el('h2');
+  heading.textContent = album.title;
+  const meta = el('span', 'meta');
+  meta.append(album.date, ' · ');
+  const count = el('span', 'count');
+  count.textContent = `${album.photos.length} photos`;
+  meta.append(count);
+  head.append(heading, el('span', 'dots'), meta);
+
+  const shots = el('div', 'shots');
+  album.photos.forEach((photo, index) => {
+    const button = el('button', 'shot');
+    button.type = 'button';
+    button.setAttribute('aria-label', `${album.title}, photo ${index + 1}`);
+    const image = el('img');
+    image.src = sized(site, photo.src, GRID_WIDTH);
+    image.srcset = `${sized(site, photo.src, 640)} 640w, ` +
+      `${sized(site, photo.src, GRID_WIDTH)} ${GRID_WIDTH}w`;
+    image.sizes = '(max-width: 620px) 100vw, (max-width: 900px) 50vw, 33vw';
+    image.loading = 'lazy';
+    image.decoding = 'async';
+    image.alt = `${album.title}, photo ${index + 1}`;
+    button.append(image);
+    button.addEventListener('click', () => openLightbox(site, album, index));
+    shots.append(button);
+  });
+
+  section.append(head, shots);
+  return section;
+}
+
+/* ---------- lightbox ---------- */
+let lightbox = null;
+
+function openLightbox(site, album, startIndex) {
+  let index = startIndex;
+
+  const overlay = el('div', 'lightbox');
+  const image = el('img');
+  const count = el('span', 'lb-count');
+
+  const show = () => {
+    const photo = album.photos[index];
+    image.src = sized(site, photo.src, FULL_WIDTH);
+    image.alt = `${album.title}, photo ${index + 1}`;
+    count.textContent = `${album.title} — ${index + 1} / ${album.photos.length}`;
+  };
+  const step = offset => {
+    index = (index + offset + album.photos.length) % album.photos.length;
+    show();
+  };
+
+  const button = (className, label, onClick) => {
+    const control = el('button', className);
+    control.type = 'button';
+    control.textContent = label;
+    control.setAttribute('aria-label', label);
+    control.addEventListener('click', event => { event.stopPropagation(); onClick(); });
+    return control;
+  };
+
+  overlay.append(
+    image,
+    count,
+    button('lb-close', 'Close', closeLightbox),
+    button('lb-prev', '‹', () => step(-1)),
+    button('lb-next', '›', () => step(1)),
+  );
+  overlay.addEventListener('click', closeLightbox);
+  image.addEventListener('click', event => event.stopPropagation());
+
+  show();
+  document.body.append(overlay);
+  document.body.style.overflow = 'hidden';
+  lightbox = { overlay, step };
+  overlay.querySelector('.lb-close').focus();
+}
+
+function closeLightbox() {
+  if (!lightbox) { return; }
+  lightbox.overlay.remove();
+  document.body.style.overflow = '';
+  lightbox = null;
+}
+
+document.addEventListener('keydown', event => {
+  if (!lightbox) { return; }
+  if (event.key === 'Escape') { closeLightbox(); }
+  if (event.key === 'ArrowLeft') { lightbox.step(-1); }
+  if (event.key === 'ArrowRight') { lightbox.step(1); }
+});
+
+/* ---------- routing ---------- */
+function route() {
   const name = (location.hash.replace(/^#\/?/, '') || 'dinners').toLowerCase();
   const page = name === 'design' ? 'design' : 'dinners';
   document.getElementById('page-dinners').hidden = page !== 'dinners';
   document.getElementById('page-design').hidden = page !== 'design';
-  document.querySelectorAll('.navlink').forEach(a => {
-    if (a.dataset.route === page) { a.setAttribute('aria-current', 'page'); }
-    else { a.removeAttribute('aria-current'); }
+  document.querySelectorAll('.navlink').forEach(link => {
+    if (link.dataset.route === page) { link.setAttribute('aria-current', 'page'); }
+    else { link.removeAttribute('aria-current'); }
+  });
+  closeLightbox();
+}
+
+/* ---------- load ---------- */
+async function load() {
+  const hosts = {
+    dinners: document.getElementById('albums-dinners'),
+    design: document.getElementById('albums-design'),
+  };
+  Object.values(hosts).forEach(host => {
+    const note = el('p', 'loading');
+    note.textContent = 'Loading photographs…';
+    host.append(note);
+  });
+
+  let manifest;
+  try {
+    const response = await fetch('photos.json', { cache: 'no-cache' });
+    manifest = await response.json();
+  } catch (error) {
+    Object.values(hosts).forEach(host => {
+      host.textContent = '';
+      const note = el('p', 'loading');
+      note.textContent = 'Photographs unavailable — reload to try again.';
+      host.append(note);
+    });
+    return;
+  }
+
+  Object.values(hosts).forEach(host => { host.textContent = ''; });
+  manifest.albums.forEach(album => {
+    const host = hosts[album.section];
+    if (host) { host.append(renderAlbum(manifest.site, album)); }
   });
 }
+
 window.addEventListener('hashchange', route);
 route();
+load();
 </script>
 </body>
 </html>

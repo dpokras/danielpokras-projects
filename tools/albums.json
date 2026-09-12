@@ -1,0 +1,10 @@
+{
+  "site": "https://photos.danielpokras.com",
+  "albums": [
+    { "slug": "bonsai-lamp",                 "section": "design",  "date": "June 2026" },
+    { "slug": "silk-road-dinner",            "section": "dinners", "date": "March 2026" },
+    { "slug": "earth-beneath-us-dinner",     "section": "dinners", "date": "September 2025" },
+    { "slug": "colors-dinner",               "section": "dinners", "date": "March 2025" },
+    { "slug": "korean-buddhist-food-dinner", "section": "dinners", "date": "March 2024" }
+  ]
+}
