@@ -1,10 +1,35 @@
 {
   "site": "https://photos.danielpokras.com",
   "albums": [
-    { "slug": "bonsai-lamp",                 "section": "design",  "date": "June 2026" },
-    { "slug": "silk-road-dinner",            "section": "dinners", "date": "March 2026" },
-    { "slug": "earth-beneath-us-dinner",     "section": "dinners", "date": "September 2025" },
-    { "slug": "colors-dinner",               "section": "dinners", "date": "March 2025" },
-    { "slug": "korean-buddhist-food-dinner", "section": "dinners", "date": "March 2024" }
+    {
+      "slug": "bonsai-lamp",
+      "section": "design",
+      "date": "June 2026",
+      "blurb": "A lamp built by hand, photographed after dark once it was finally wired up and working."
+    },
+    {
+      "slug": "silk-road-dinner",
+      "section": "dinners",
+      "date": "March 2026",
+      "blurb": "We followed the old trade routes from east to west, course by course, along with the stories that travelled the same roads as the spices."
+    },
+    {
+      "slug": "earth-beneath-us-dinner",
+      "section": "dinners",
+      "date": "September 2025",
+      "blurb": "An evening about what sits under our feet — the soil, the things that grow in it, and how much of what we eat starts down there."
+    },
+    {
+      "slug": "colors-dinner",
+      "section": "dinners",
+      "date": "March 2025",
+      "blurb": "This one was organised entirely by colour, with each part of the night built around a different one."
+    },
+    {
+      "slug": "korean-buddhist-food-dinner",
+      "section": "dinners",
+      "date": "March 2024",
+      "blurb": "Korean temple cooking — the quiet, vegetable-led food that Buddhist monastics have been making for centuries, and the ideas behind why it's cooked that way."
+    }
   ]
 }

@@ -1,12 +1,13 @@
 {
   "site": "https://photos.danielpokras.com",
-  "generated": "2026-09-12T15:33:08Z",
+  "generated": "2026-09-12T15:42:00Z",
   "albums": [
     {
       "slug": "bonsai-lamp",
       "title": "Bonsai Lamp",
       "section": "design",
       "date": "June 2026",
+      "blurb": "A lamp built by hand, photographed after dark once it was finally wired up and working.",
       "photos": [
         {
           "id": "z8nYfWFF",
@@ -55,6 +56,7 @@
       "title": "Silk Road Dinner",
       "section": "dinners",
       "date": "March 2026",
+      "blurb": "We followed the old trade routes from east to west, course by course, along with the stories that travelled the same roads as the spices.",
       "photos": [
         {
           "id": "PAQ1Gg68",
@@ -107,6 +109,7 @@
       "title": "Earth Beneath Us Dinner",
       "section": "dinners",
       "date": "September 2025",
+      "blurb": "An evening about what sits under our feet \u2014 the soil, the things that grow in it, and how much of what we eat starts down there.",
       "photos": [
         {
           "id": "4ucPQy6k",
@@ -155,6 +158,7 @@
       "title": "Colors Dinner",
       "section": "dinners",
       "date": "March 2025",
+      "blurb": "This one was organised entirely by colour, with each part of the night built around a different one.",
       "photos": [
         {
           "id": "iAVSRDFr",
@@ -207,6 +211,7 @@
       "title": "Korean Buddhist Food Dinner",
       "section": "dinners",
       "date": "March 2024",
+      "blurb": "Korean temple cooking \u2014 the quiet, vegetable-led food that Buddhist monastics have been making for centuries, and the ideas behind why it's cooked that way.",
       "photos": [
         {
           "id": "KNMyLz9e",

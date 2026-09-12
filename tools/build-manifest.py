@@ -71,6 +71,7 @@ def build_album(site, album):
         'title': title,
         'section': album['section'],
         'date': album['date'],
+        'blurb': album.get('blurb', ''),
         'photos': photos,
     }
 

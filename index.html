@@ -69,11 +69,12 @@ h1{font-family:var(--display);font-weight:400;font-style:italic;font-size:clamp(
 
 /* Album galleries: every photo, natural shape, grouped by night */
 .album-list{display:flex;flex-direction:column;gap:56px}
-.album-head{display:flex;align-items:baseline;gap:16px;margin:0 0 20px}
+.album-head{display:flex;align-items:baseline;gap:16px;margin:0 0 14px}
 .album-head h2{font-family:var(--display);font-size:27px;font-weight:500;margin:0;line-height:1.1;white-space:nowrap}
 .album-head .dots{flex:1;border-bottom:1px dotted var(--line-strong);transform:translateY(-5px)}
 .album-head .meta{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--muted);white-space:nowrap}
 .album-head .meta .count{color:var(--violet)}
+.album-blurb{margin:-6px 0 22px;max-width:64ch;color:var(--muted);font-size:16px}
 .shots{columns:3;column-gap:18px}
 .shot{break-inside:avoid;margin:0 0 18px;display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;line-height:0}
 .shot img{display:block;width:100%;height:auto;background:var(--paper);border:1px solid var(--line);transition:opacity .25s ease}
@@ -127,10 +128,9 @@ footer{margin:60px 0 0;border-top:1px solid var(--line-strong);padding:26px 0 60
     <section id="page-dinners">
       <div class="intro">
         <div>
-          <p class="eyebrow">Cooked and eaten</p>
           <h1>Dinners</h1>
         </div>
-        <p class="lead">Four dinners, each with a theme and a menu. <em>Every photograph</em> from each night.</p>
+        <p class="lead">These are part of <em>Moku Pona</em>, our twice-yearly dinner club. Each one takes a theme from culture or history and works through it in food and storytelling — somewhere different every time. Here are the last four we hosted.</p>
       </div>
       <div id="albums-dinners" class="album-list"></div>
     </section>
@@ -202,7 +202,13 @@ function renderAlbum(site, album) {
     shots.append(button);
   });
 
-  section.append(head, shots);
+  section.append(head);
+  if (album.blurb) {
+    const blurb = el('p', 'album-blurb');
+    blurb.textContent = album.blurb;
+    section.append(blurb);
+  }
+  section.append(shots);
   return section;
 }
 
