@@ -76,8 +76,8 @@ h1{font-family:var(--display);font-weight:400;font-style:italic;font-size:clamp(
 .album-head .meta{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--muted);white-space:nowrap}
 .album-head .meta .count{color:var(--violet)}
 .album-blurb{margin:-6px 0 22px;max-width:64ch;color:var(--muted);font-size:16px}
-.album-blurb a{color:var(--violet);text-decoration:none;border-bottom:1px solid var(--line-strong)}
-.album-blurb a:hover{border-bottom-color:var(--violet)}
+.album-blurb a,.lead a{color:var(--violet);text-decoration:none;border-bottom:1px solid var(--line-strong)}
+.album-blurb a:hover,.lead a:hover{border-bottom-color:var(--violet)}
 .shots{columns:3;column-gap:18px}
 .shot{break-inside:avoid;margin:0 0 18px;display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;line-height:0}
 .shot img{display:block;width:100%;height:auto;background:var(--paper);border:1px solid var(--line);transition:opacity .25s ease}
@@ -133,7 +133,7 @@ footer{margin:60px 0 0;border-top:1px solid var(--line-strong);padding:26px 0 60
         <div>
           <h1>Dinners</h1>
         </div>
-        <p class="lead">These are part of <em>Moku Pona</em>, our twice-yearly dinner club. Each one takes a theme from culture or history and works through it in food and storytelling — somewhere different every time. Here are the last four we hosted.</p>
+        <p class="lead">These are part of <a href="https://mokupona.ch" rel="noopener"><em>moku pona</em></a> — meaning <em>good food</em> in toki pona — our twice-yearly dinner club. Each one takes a theme from culture or history and works through it in food and storytelling, somewhere different every time. Here are the last four we hosted.</p>
       </div>
       <div id="albums-dinners" class="album-list"></div>
     </section>
