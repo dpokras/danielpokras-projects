@@ -78,8 +78,9 @@ h1{font-family:var(--display);font-weight:400;font-style:italic;font-size:clamp(
 .album-blurb{margin:0 0 32px;max-width:72ch;color:var(--muted);font-size:16px;text-align:justify;hyphens:auto}
 .album-blurb a,.lead a{color:var(--violet);text-decoration:none;border-bottom:1px solid var(--line-strong)}
 .album-blurb a:hover,.lead a:hover{border-bottom-color:var(--violet)}
-.shots{columns:3;column-gap:18px}
-.shot{break-inside:avoid;margin:0 0 18px;display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;line-height:0}
+.shots{display:flex;gap:18px;align-items:flex-start}
+.shots-col{flex:1;min-width:0}
+.shot{margin:0 0 18px;display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;line-height:0}
 .shot img{display:block;width:100%;height:auto;background:var(--paper);border:1px solid var(--line);transition:opacity .25s ease}
 .shot:hover img{opacity:.85}
 .loading{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
@@ -101,13 +102,12 @@ footer{margin:60px 0 0;border-top:1px solid var(--line-strong);padding:26px 0 60
 
 :focus-visible{outline:2px solid var(--violet);outline-offset:3px}
 @media (max-width:860px){ .intro{grid-template-columns:1fr;gap:22px;padding:40px 0 32px} }
-@media (max-width:900px){ .shots{columns:2} }
 @media (max-width:700px){
   .album-head{flex-direction:column;align-items:flex-start;gap:6px}
   .album-head h2{white-space:normal}
   .album-head .dots{display:none}
 }
-@media (max-width:620px){ .shots{columns:1} .wrap{padding:0 20px} nav{gap:18px} .lightbox{padding:56px 44px} .lb-prev,.lb-next{padding:12px 8px} .lb-prev{left:2px} .lb-next{right:2px} }
+@media (max-width:620px){ .wrap{padding:0 20px} nav{gap:18px} .lightbox{padding:56px 44px} .lb-prev,.lb-next{padding:12px 8px} .lb-prev{left:2px} .lb-next{right:2px} }
 @media (prefers-reduced-motion:reduce){ *{transition:none!important} }
 </style>
 </head>
@@ -164,6 +164,22 @@ footer{margin:60px 0 0;border-top:1px solid var(--line-strong);padding:26px 0 60
 const GRID_WIDTH = 1080;
 const FULL_WIDTH = 1920;
 
+// Column breakpoints; keep in step with the image `sizes` hint below.
+const COLUMNS = [
+  { query: window.matchMedia('(max-width: 620px)'), count: 1 },
+  { query: window.matchMedia('(max-width: 900px)'), count: 2 },
+];
+const columnCount = () => (COLUMNS.find(c => c.query.matches) || { count: 3 }).count;
+
+// Every album's grid, re-dealt whenever the window crosses a breakpoint.
+const galleries = [];
+let laidOutColumns = columnCount();
+window.addEventListener('resize', () => {
+  if (columnCount() === laidOutColumns) { return; }
+  laidOutColumns = columnCount();
+  galleries.forEach(({ shots, tiles }) => layoutShots(shots, tiles));
+});
+
 const sized = (site, src, width) =>
   `${site}/_next/image?url=${encodeURIComponent(src)}&w=${width}&q=75`;
 
@@ -193,6 +209,38 @@ function withLinks(text) {
   return fragment;
 }
 
+// Balance the columns using the manifest's aspect ratios, so it works before
+// any image has loaded. Tallest photos are dealt first, each to the currently
+// shortest column; then every column is put back into album order, and the
+// columns are ordered by their earliest photo so the album still opens top-left.
+const TILE_GAP = 0.05; // the 18px gap below each photo, in column widths
+
+function layoutShots(shots, tiles) {
+  const count = columnCount();
+  const groups = Array.from({ length: count }, () => []);
+  const heights = groups.map(() => 0);
+  tiles
+    .map((tile, index) => ({ ...tile, index, height: 1 / tile.aspect + TILE_GAP }))
+    .sort((a, b) => b.height - a.height || a.index - b.index)
+    .forEach(tile => {
+      const shortest = heights.indexOf(Math.min(...heights));
+      groups[shortest].push(tile);
+      heights[shortest] += tile.height;
+    });
+
+  const columns = groups
+    .filter(group => group.length)
+    .map(group => group.sort((a, b) => a.index - b.index))
+    .sort((a, b) => a[0].index - b[0].index)
+    .map(group => {
+      const column = el('div', 'shots-col');
+      column.append(...group.map(tile => tile.button));
+      return column;
+    });
+  while (columns.length < count) { columns.push(el('div', 'shots-col')); }
+  shots.replaceChildren(...columns);
+}
+
 function renderAlbum(site, album) {
   const section = el('section', 'album');
 
@@ -207,6 +255,7 @@ function renderAlbum(site, album) {
   head.append(heading, el('span', 'dots'), meta);
 
   const shots = el('div', 'shots');
+  const tiles = [];
   album.photos.forEach((photo, index) => {
     const button = el('button', 'shot');
     button.type = 'button';
@@ -219,10 +268,13 @@ function renderAlbum(site, album) {
     image.loading = 'lazy';
     image.decoding = 'async';
     image.alt = `${album.title}, photo ${index + 1}`;
+    image.style.aspectRatio = photo.aspect || 1;
     button.append(image);
     button.addEventListener('click', () => openLightbox(site, album, index));
-    shots.append(button);
+    tiles.push({ button, aspect: photo.aspect || 1 });
   });
+  galleries.push({ shots, tiles });
+  layoutShots(shots, tiles);
 
   section.append(head);
   if (album.blurb) {

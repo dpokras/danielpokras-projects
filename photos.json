@@ -1,6 +1,6 @@
 {
   "site": "https://photos.danielpokras.com",
-  "generated": "2026-10-07T11:24:19Z",
+  "generated": "2026-10-07T13:49:24Z",
   "albums": [
     {
       "slug": "bonsai-lamp",
@@ -11,43 +11,53 @@
       "photos": [
         {
           "id": "z8nYfWFF",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-OGSxsXMAyK4e0VJ5.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-OGSxsXMAyK4e0VJ5.jpeg",
+          "aspect": 1.5
         },
         {
           "id": "5S2dP433",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-Y0NDI4U8MsWt3lkN.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-Y0NDI4U8MsWt3lkN.jpeg",
+          "aspect": 0.6667
         },
         {
           "id": "i5t5yE1t",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-Zr6H9PQ83mkoshqc.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-Zr6H9PQ83mkoshqc.jpeg",
+          "aspect": 1.5
         },
         {
           "id": "lxOd5cw7",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-NOdeayWRkHFX6xDs.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-NOdeayWRkHFX6xDs.jpeg",
+          "aspect": 0.6667
         },
         {
           "id": "W1rX1smz",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-SlW1cmD4nU99GOEy.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-SlW1cmD4nU99GOEy.jpeg",
+          "aspect": 0.6667
         },
         {
           "id": "18ariNi5",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-FChnDb8PiEB5Cd04.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-FChnDb8PiEB5Cd04.jpeg",
+          "aspect": 0.6667
         },
         {
           "id": "9SPRTSpv",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-He1mxnrlNfOzYO5l.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-He1mxnrlNfOzYO5l.jpeg",
+          "aspect": 0.6667
         },
         {
           "id": "nkGWU9qQ",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-SFWjOXnJIzruqk4s.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-SFWjOXnJIzruqk4s.jpeg",
+          "aspect": 0.6667
         },
         {
           "id": "qf6mt0Fe",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-gKG3tKpUDRP4dC4k.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-gKG3tKpUDRP4dC4k.jpeg",
+          "aspect": 0.6667
         },
         {
           "id": "YX5Ruglu",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-nRyOqgOzXlKUf2Fg.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-nRyOqgOzXlKUf2Fg.jpeg",
+          "aspect": 0.6667
         }
       ]
     },
@@ -60,47 +70,58 @@
       "photos": [
         {
           "id": "PAQ1Gg68",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-pHTKTUSCP8J5z6va.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-pHTKTUSCP8J5z6va.jpeg",
+          "aspect": 0.6667
         },
         {
           "id": "7XDnzbum",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-3Il0jqKadQ7qdJ8i.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-3Il0jqKadQ7qdJ8i.jpeg",
+          "aspect": 1.5
         },
         {
           "id": "ziWYhwab",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-aPO868qfE97r0ZpA.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-aPO868qfE97r0ZpA.jpeg",
+          "aspect": 1.5
         },
         {
           "id": "hyBRS6I5",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-Omo91lPcwKPE0G9Q.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-Omo91lPcwKPE0G9Q.jpeg",
+          "aspect": 1.5
         },
         {
           "id": "pm7CO8JI",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-QUFUTHnF1mRO7NgU.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-QUFUTHnF1mRO7NgU.jpeg",
+          "aspect": 0.6667
         },
         {
           "id": "Q1IYUMpg",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-lQwKV6Gfv8XrAyNb.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-lQwKV6Gfv8XrAyNb.jpeg",
+          "aspect": 1.5
         },
         {
           "id": "3lbbZK65",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-YBqEKsnYbb6mXAto.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-YBqEKsnYbb6mXAto.jpeg",
+          "aspect": 1.5
         },
         {
           "id": "dClIkgXn",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-oZfn2G9FuzBfwGKz.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-oZfn2G9FuzBfwGKz.jpeg",
+          "aspect": 1.5
         },
         {
           "id": "MyE9DdVH",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-O2Zar4v8PRwqhfXS.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-O2Zar4v8PRwqhfXS.jpeg",
+          "aspect": 1.5
         },
         {
           "id": "3jbJJ6WV",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-sGTyOF79el6XtqVY.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-sGTyOF79el6XtqVY.jpeg",
+          "aspect": 1.5
         },
         {
           "id": "sUcevC8H",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-FKf0iCI2Cae7j559.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-FKf0iCI2Cae7j559.jpeg",
+          "aspect": 1.5
         }
       ]
     },
@@ -113,43 +134,53 @@
       "photos": [
         {
           "id": "4ucPQy6k",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-VnBw81YNJP1hFvdb.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-VnBw81YNJP1hFvdb.jpeg",
+          "aspect": 0.75
         },
         {
           "id": "MPLu0qN5",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-K5t7n9YgYEubJ0FH.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-K5t7n9YgYEubJ0FH.jpeg",
+          "aspect": 0.75
         },
         {
           "id": "Hs66hhiy",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-Pi3OfOtDy6gylx7N.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-Pi3OfOtDy6gylx7N.jpeg",
+          "aspect": 0.75
         },
         {
           "id": "2omb2V6m",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-Yy5EAtDbTi5pgSsA.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-Yy5EAtDbTi5pgSsA.jpeg",
+          "aspect": 0.75
         },
         {
           "id": "HcXGk27q",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-fyd85XUetLhjMXi2.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-fyd85XUetLhjMXi2.jpeg",
+          "aspect": 1.5
         },
         {
           "id": "I8utCHjK",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-F0riFUmFzQSEpO56.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-F0riFUmFzQSEpO56.jpeg",
+          "aspect": 1.5
         },
         {
           "id": "pD2abolW",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-zcmEKfYxIJBlQwAF.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-zcmEKfYxIJBlQwAF.jpeg",
+          "aspect": 0.6667
         },
         {
           "id": "G8ZqVo14",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-AMLM44aZSTZRCGjg.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-AMLM44aZSTZRCGjg.jpeg",
+          "aspect": 1.5
         },
         {
           "id": "8zHPcC3W",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-caixcn01R9JxGNDm.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-caixcn01R9JxGNDm.jpeg",
+          "aspect": 1.5
         },
         {
           "id": "IY090SBv",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-T1l9WGoDDiiLwLHu.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-T1l9WGoDDiiLwLHu.jpeg",
+          "aspect": 1.5
         }
       ]
     },
@@ -162,47 +193,58 @@
       "photos": [
         {
           "id": "iAVSRDFr",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-yVjxDshK3vwmsDCb.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-yVjxDshK3vwmsDCb.jpeg",
+          "aspect": 0.6667
         },
         {
           "id": "RhRvCupv",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-kRrkMlazQStM7HIz.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-kRrkMlazQStM7HIz.jpeg",
+          "aspect": 0.6667
         },
         {
           "id": "NlsPOFtl",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-32T8tH418KSMO5U0.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-32T8tH418KSMO5U0.jpeg",
+          "aspect": 0.6667
         },
         {
           "id": "N6VyuX4e",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-qCz4o8GuLBrEw5bF.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-qCz4o8GuLBrEw5bF.jpeg",
+          "aspect": 1.5
         },
         {
           "id": "PTLnpcna",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-OMRc5AE1ZxCCfVnn.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-OMRc5AE1ZxCCfVnn.jpeg",
+          "aspect": 1.5
         },
         {
           "id": "3Yp531zD",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-02heYzehmnNxQmsB.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-02heYzehmnNxQmsB.jpeg",
+          "aspect": 0.6667
         },
         {
           "id": "wRqzF8YG",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-SJR0CBHHWY3IRDyk.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-SJR0CBHHWY3IRDyk.jpeg",
+          "aspect": 0.75
         },
         {
           "id": "3sBmHo3J",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-KRJS5VT9RDGlcyTY.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-KRJS5VT9RDGlcyTY.jpeg",
+          "aspect": 0.75
         },
         {
           "id": "TStJlx9d",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-3pQV6Jes2V8pDbMk.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-3pQV6Jes2V8pDbMk.jpeg",
+          "aspect": 0.75
         },
         {
           "id": "xvqU6i6G",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-rJcDy2UH1sAIsaBd.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-rJcDy2UH1sAIsaBd.jpeg",
+          "aspect": 0.75
         },
         {
           "id": "4tPen3Ln",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-7mYlOLYuEGXe7Ktb.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-7mYlOLYuEGXe7Ktb.jpeg",
+          "aspect": 0.75
         }
       ]
     },
@@ -215,15 +257,18 @@
       "photos": [
         {
           "id": "KNMyLz9e",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-YhF2gSmBT4r8MvNY.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-YhF2gSmBT4r8MvNY.jpeg",
+          "aspect": 1.5
         },
         {
           "id": "iMtUhXHg",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-06s9Sq3At9zk4GCB.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-06s9Sq3At9zk4GCB.jpeg",
+          "aspect": 1.5
         },
         {
           "id": "m5hC3BoO",
-          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-vDZ9otlNYNK73ttE.jpeg"
+          "src": "https://nw8ync2xyzrxrnsm.public.blob.vercel-storage.com/photo-vDZ9otlNYNK73ttE.jpeg",
+          "aspect": 1.5
         }
       ]
     }

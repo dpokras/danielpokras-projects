@@ -59,8 +59,16 @@ def build_album(site, album):
               f'{len(photo_ids)} ids)', file=sys.stderr)
         blob_urls = [blob_url_for_photo(site, slug, photo_id) for photo_id in photo_ids]
 
+    # The page data also carries each photo's aspect ratio (width / height),
+    # which lets the site balance its columns before any image has loaded.
+    aspects = {
+        url: round(float(ratio), 4)
+        for url, ratio in re.findall(
+            r'\\"url\\":\\"(https://[^"\\]+)\\"[^{}]*?\\"aspectRatio\\":([0-9.]+)', html)
+    }
+
     photos = [
-        {'id': photo_id, 'src': blob_url}
+        {'id': photo_id, 'src': blob_url, 'aspect': aspects.get(blob_url, 1)}
         for photo_id, blob_url in zip(photo_ids, blob_urls)
         if blob_url
     ]
