@@ -177,6 +177,33 @@ footer{margin:60px 0 0;border-top:1px solid var(--line-strong);padding:26px 0 60
         <dd><p>I'm not responsible for the content of sites linked from here; their operators are.</p></dd>
       </dl>
     </section>
+
+    <section id="page-privacy" hidden>
+      <div class="intro">
+        <div>
+          <h1>Privacy</h1>
+        </div>
+        <p class="lead">What happens to your data when you visit this site or <a href="https://photos.danielpokras.com">photos.danielpokras.com</a>. The short version: no tracking, no analytics, no cookies.</p>
+      </div>
+      <dl class="legal">
+        <dt>Responsible</dt>
+        <dd><p>Daniel Pokras, Badenerstrasse 123, 8004 Zürich, Switzerland — <a href="mailto:hello@danielpokras.com">hello@danielpokras.com</a>. This policy follows the Swiss Federal Act on Data Protection (FADP) and, for visitors from the EU, the GDPR.</p></dd>
+        <dt>What I collect</dt>
+        <dd><p>Nothing myself. There are no forms, accounts, comments, newsletters, analytics or tracking pixels on either site.</p></dd>
+        <dt>Hosting</dt>
+        <dd><p>Both sites and their photographs are hosted by Vercel Inc. (USA). Like any web host, Vercel's servers record technical data when a page is requested — your IP address, browser, the page and the time — to deliver the site and keep it secure. Vercel may process this data outside Switzerland, including in the USA. See <a href="https://vercel.com/legal/privacy-policy" rel="noopener">Vercel's privacy policy</a>.</p></dd>
+        <dt>Fonts</dt>
+        <dd><p>This site loads its typefaces from Google Fonts, so your browser contacts Google's servers and your IP address is sent to Google. See <a href="https://policies.google.com/privacy" rel="noopener">Google's privacy policy</a>.</p></dd>
+        <dt>Email</dt>
+        <dd><p>If you write to hello@danielpokras.com, your message passes through an email-forwarding service and is stored in a Google mailbox. I use it only to reply, and delete it when it's no longer needed.</p></dd>
+        <dt>Cookies</dt>
+        <dd><p>Neither site sets cookies for visitors, and nothing is stored in your browser. That's why there is no cookie banner. The photo blog's sign-in page sets a single login cookie, used only by me to manage photos.</p></dd>
+        <dt>Your rights</dt>
+        <dd><p>You can ask what data about you I hold, and have it corrected or deleted, by writing to the address above. You can also complain to the Swiss Federal Data Protection and Information Commissioner (FDPIC) or, in the EU, to your local data protection authority.</p></dd>
+        <dt>Updated</dt>
+        <dd><p>7 October 2026</p></dd>
+      </dl>
+    </section>
   </main>
 
   <footer>
@@ -184,6 +211,7 @@ footer{margin:60px 0 0;border-top:1px solid var(--line-strong);padding:26px 0 60
       <span>Daniel Pokras</span>
       <span><a href="mailto:hello@danielpokras.com">hello@danielpokras.com</a></span>
       <span><a href="#/impressum">Impressum</a></span>
+      <span><a href="#/privacy">Privacy</a></span>
       <span><a href="https://photos.danielpokras.com">All photos →</a></span>
     </div>
   </footer>
@@ -327,14 +355,14 @@ document.addEventListener('keydown', event => {
 });
 
 /* ---------- routing ---------- */
-const PAGES = ['dinners', 'design', 'impressum'];
+const PAGES = ['dinners', 'design', 'impressum', 'privacy'];
 let currentPage = null;
 
 function route() {
   const name = (location.hash.replace(/^#\/?/, '') || 'dinners').toLowerCase();
   const page = PAGES.includes(name) ? name : 'dinners';
   PAGES.forEach(p => { document.getElementById(`page-${p}`).hidden = p !== page; });
-  // The Impressum is linked from the footer, so land at the top of the new page.
+  // The legal pages are linked from the footer, so land at the top of the new page.
   if (currentPage && currentPage !== page) { window.scrollTo(0, 0); }
   currentPage = page;
   document.querySelectorAll('.navlink').forEach(link => {
