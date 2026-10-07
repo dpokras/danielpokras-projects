@@ -99,6 +99,15 @@ footer{margin:60px 0 0;border-top:1px solid var(--line-strong);padding:26px 0 60
 .foot-row a{color:var(--violet);text-decoration:none;border-bottom:1px solid transparent}
 .foot-row a:hover{border-bottom-color:var(--violet)}
 
+/* Impressum */
+.legal{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:18px 40px;margin:0;max-width:760px}
+.legal dt{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--violet);padding-top:4px}
+.legal dd{margin:0;color:var(--ink)}
+.legal dd p{margin:0 0 10px;color:var(--muted);max-width:62ch}
+.legal dd p:last-child{margin-bottom:0}
+.legal a{color:var(--violet);text-decoration:none;border-bottom:1px solid var(--line-strong)}
+.legal a:hover{border-bottom-color:var(--violet)}
+
 :focus-visible{outline:2px solid var(--violet);outline-offset:3px}
 @media (max-width:860px){ .intro{grid-template-columns:1fr;gap:22px;padding:40px 0 32px} }
 @media (max-width:900px){ .shots{columns:2} }
@@ -107,7 +116,7 @@ footer{margin:60px 0 0;border-top:1px solid var(--line-strong);padding:26px 0 60
   .album-head h2{white-space:normal}
   .album-head .dots{display:none}
 }
-@media (max-width:620px){ .shots{columns:1} .wrap{padding:0 20px} nav{gap:18px} .lightbox{padding:56px 44px} .lb-prev,.lb-next{padding:12px 8px} .lb-prev{left:2px} .lb-next{right:2px} }
+@media (max-width:620px){ .shots{columns:1} .legal{grid-template-columns:1fr;gap:6px} .legal dd{margin-bottom:16px} .wrap{padding:0 20px} nav{gap:18px} .lightbox{padding:56px 44px} .lb-prev,.lb-next{padding:12px 8px} .lb-prev{left:2px} .lb-next{right:2px} }
 @media (prefers-reduced-motion:reduce){ *{transition:none!important} }
 </style>
 </head>
@@ -147,12 +156,34 @@ footer{margin:60px 0 0;border-top:1px solid var(--line-strong);padding:26px 0 60
       </div>
       <div id="albums-design" class="album-list"></div>
     </section>
+
+    <section id="page-impressum" hidden>
+      <div class="intro">
+        <div>
+          <h1>Impressum</h1>
+        </div>
+        <p class="lead">Who is responsible for this site and for <a href="https://photos.danielpokras.com">photos.danielpokras.com</a>.</p>
+      </div>
+      <dl class="legal">
+        <dt>Responsible</dt>
+        <dd>Daniel Pokras<br>Badenerstrasse 123<br>8004 Zürich<br>Switzerland</dd>
+        <dt>Contact</dt>
+        <dd><a href="mailto:hello@danielpokras.com">hello@danielpokras.com</a></dd>
+        <dt>Purpose</dt>
+        <dd><p>A personal, non-commercial site showing dinners hosted with <a href="https://mokupona.ch" rel="noopener">moku pona</a> and things I've designed and made.</p></dd>
+        <dt>Copyright</dt>
+        <dd><p>Photographs and text are © Daniel Pokras unless credited otherwise. Please ask before reusing them.</p></dd>
+        <dt>External links</dt>
+        <dd><p>I'm not responsible for the content of sites linked from here; their operators are.</p></dd>
+      </dl>
+    </section>
   </main>
 
   <footer>
     <div class="foot-row">
       <span>Daniel Pokras</span>
       <span><a href="mailto:hello@danielpokras.com">hello@danielpokras.com</a></span>
+      <span><a href="#/impressum">Impressum</a></span>
       <span><a href="https://photos.danielpokras.com">All photos →</a></span>
     </div>
   </footer>
@@ -296,11 +327,16 @@ document.addEventListener('keydown', event => {
 });
 
 /* ---------- routing ---------- */
+const PAGES = ['dinners', 'design', 'impressum'];
+let currentPage = null;
+
 function route() {
   const name = (location.hash.replace(/^#\/?/, '') || 'dinners').toLowerCase();
-  const page = name === 'design' ? 'design' : 'dinners';
-  document.getElementById('page-dinners').hidden = page !== 'dinners';
-  document.getElementById('page-design').hidden = page !== 'design';
+  const page = PAGES.includes(name) ? name : 'dinners';
+  PAGES.forEach(p => { document.getElementById(`page-${p}`).hidden = p !== page; });
+  // The Impressum is linked from the footer, so land at the top of the new page.
+  if (currentPage && currentPage !== page) { window.scrollTo(0, 0); }
+  currentPage = page;
   document.querySelectorAll('.navlink').forEach(link => {
     if (link.dataset.route === page) { link.setAttribute('aria-current', 'page'); }
     else { link.removeAttribute('aria-current'); }
