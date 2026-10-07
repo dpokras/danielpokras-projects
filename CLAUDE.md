@@ -22,8 +22,6 @@ working inside *this* repo specifically.
   `python3 tools/build-manifest.py`.
 - `photos.json` — generated from the live photo blog's album pages. Don't
   hand-edit; rebuild instead.
-  Each photo carries its `aspect` (width / height), which the page uses to
-  deal photos into balanced columns before any image loads.
 - `.github/workflows/manifest.yml` — rebuilds `photos.json` daily (05:00 UTC)
   and on demand (Actions → Rebuild photo manifest → Run workflow).
 
